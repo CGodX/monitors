@@ -2,31 +2,46 @@
 	<form>
 		<div class="form-group">
 			<label>服务器名称</label>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control" ng-model="form.name">
 		</div>
 		<div class="form-group">
 			<label>网站地址</label>
-			<input type="text" class="form-control">
+			<input type="text" class="form-control" ng-model="form.domain">
 		</div>
 		<div class="row">
 			<div class="form-group col-md-8">
 				<label>服务器IP</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" ng-model="form.ip">
 			</div>
 			<div class="form-group col-md-4">
 				<label>服务器端口</label>
-				<input type="text" class="form-control" placeholder="22">
+				<input type="text" class="form-control" placeholder="22" ng-model="form.port">
 			</div>
 		</div>
 		<div class="row">
 			<div class="form-group col-md-6">
 				<label>账号</label>
-				<input type="text" class="form-control">
+				<input type="text" class="form-control" ng-model="form.account">
 			</div>
 			<div class="form-group col-md-6">
 				<label>密码</label>
-				<input type="password" class="form-control">
+				<input type="text" class="form-control" ng-model="form.password">
 			</div>
+		</div>
+		<div class="form-group">
+			<label>Tomcat路径</label>
+			<input type="text" class="form-control" ng-model="form.tomcat">
+		</div>
+		<div class="form-group" ng-init="form.urlList = form.urlList || ['']">
+			<label>服务器状态监控</label>
+			<div class="input-group" ng-repeat-start="url in form.urlList track by $index">
+				<input type="text" class="form-control" ng-model="form.urlList[$index]">
+				<span class="input-group-btn">
+					<button class="btn btn-info" ng-click="form.urlList.push('')" type="button">添加</button>
+					<button class="btn btn-danger" ng-click="form.urlList.remove(url)" type="button">删除</button>
+				</span>
+			</div>
+			<div class="form-group" ng-repeat-end></div>
 		</div>
 	</form>
 </div>

@@ -6,8 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 
-var index = require('./routes/index');
-
 var app = express();
 
 // view engine setup
@@ -24,7 +22,9 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'bower_components')));
 
-app.use('/', index);
+app.use('/', require('./routes/index'));
+app.use('/server', require('./routes/server'));
+app.use('/ssh', require('./routes/ssh'));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

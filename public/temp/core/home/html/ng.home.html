@@ -1,3 +1,55 @@
 <div class="ng-home-page">
-	<button class="btn btn-primary" ng-click="addOrEdit()">新增系统</button>
+	<div class="form-group">
+		<button class="btn btn-primary" ng-click="addOrEdit()">新增系统</button>
+	</div>
+	<div>
+		<div class="row">
+			<div class="col-sm-6" ng-repeat="item in list">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						{{ item.name }} 
+						( <a ng-href="{{ getDomain(item.domain) }}" target="_blank">{{ getDomain(item.domain) }}</a> )
+					</div>
+					<div class="panel-body">
+						<div ng-repeat="url in item.urlList" ng-click="showReqDetail(item, url)">
+							<b>请求状态[{{ url }}]:</b> {{ req(item, url).statusCode }}
+						</div>
+						<div>
+							<b>服务器:</b> {{ item.ip }}<span ng-if="item.port">:{{ item.port }}</span>
+						</div>
+						<div>
+							<b>Tomcat:</b> {{ item.tomcat }}
+						</div>
+					</div>
+					<div class="panel-body">
+						<div layout>
+							<div>
+								<button class="btn btn-default" ng-click="addOrEdit(item)">
+									<i class="material-icons">edit</i> 编辑
+								</button>
+								<button class="btn btn-danger" ng-click="del(item)">
+									<i class="material-icons">delete_forever</i> 删除
+								</button>
+							</div>
+							<span flex></span>
+							<div>
+								<button class="btn btn-default" ng-click="tomactStart(item)">
+									<i class="material-icons">check_circle</i> 启动
+								</button>
+								<button class="btn btn-default" disabled>
+									<i class="material-icons">pan_tool</i> 停止
+								</button>
+								<button class="btn btn-default" disabled>
+									<i class="material-icons">autorenew</i> 重启
+								</button>
+								<a class="btn btn-default" ng-href="#/log/list/{{ item.id }}">
+									<i class="material-icons">format_align_justify</i> 日志
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

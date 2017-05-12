@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "gulp & node ./bin/www",
-    "dev": "gulp dev & nodemon ./bin/www"
+    "dev": "gulp dev"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
@@ -23,6 +23,10 @@
     "gulp-uglifyjs": "^0.6.2",
     "less-middleware": "~2.2.0",
     "morgan": "~1.8.1",
-    "serve-favicon": "~2.4.2"
+    "request": "^2.81.0",
+    "serve-favicon": "~2.4.2",
+    "socket.io": "^2.0.1",
+    "ssh2": "^0.5.4",
+    "uuid": "^3.0.1"
   }
 }
