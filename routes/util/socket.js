@@ -18,10 +18,11 @@ var m = {
 
 				var server = db.findById(db.type.server, id);
 
-				var cmd = 'tail -f ' + server.tomcat + '/logs/' + log;
+				var cmd = 'tail -f -c 10000 ' + server.tomcat + '/logs/' + log;
 				console.log(cmd);
 				const conn = new Client();
 				socket.on('disconnect', function () {
+					console.log('socket disconnect');
 					conn.end();
 				});
 				conn.on('ready', function () {
