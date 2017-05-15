@@ -13,6 +13,8 @@ var m = {
 			socket.on(socket.id, function (arrStr) {
 				var arr = JSON.parse(arrStr);
 
+				console.log('socket tail log ', arrStr);
+
 				var id = arr[0],
 					log = arr[1];
 
