@@ -7,8 +7,13 @@ angular.module('app')
 			socket.on(socket.id, function (msg) {
 				$scope.$apply(function(){
 					$scope.log += msg;
-					document.body.scrollTop = document.body.offsetHeight + document.body.scrollTop;
 				});
+			});
+		});
+
+		$scope.$watch('log', function(){
+			setTimeout(function(){
+				document.body.scrollTop = document.body.offsetHeight + document.body.scrollTop + 100;
 			});
 		});
 	}]);
